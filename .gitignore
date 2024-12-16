@@ -1,0 +1,12 @@
+# Ignorar arquivos JSON
+*.json
+
+# Ignorar pastas de ambiente virtual do Python
+venv/
+.env/
+
+# Ignorar arquivos de configuração do ambiente
+.env
+.idea
+.idea/
+
