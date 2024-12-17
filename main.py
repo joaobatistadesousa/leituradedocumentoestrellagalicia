@@ -108,9 +108,16 @@ def parse_response_canhotos(document):
 
     for entity in document.entities:
         if entity.type_ in extracted_data:
-            extracted_data[entity.type_] = entity.mention_text
+            value = entity.mention_text.strip() if entity.mention_text else None
+            
+            # Remover pontos e espaços para NFENSERIE
+            if entity.type_ == "NFENSERIE" and value:
+                value = value.replace(".", "").replace(" ", "")
+            
+            extracted_data[entity.type_] = value
 
     return extracted_data
+
 
 # Namespace para documentos
 ns = api.namespace('documents', description='Operações relacionadas a documentos')
